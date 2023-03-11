@@ -1,0 +1,16 @@
+extends template.pug
+block scripts
+block style 
+  style
+    include ../static/css/Signin.css
+    include ../static/css/media.css
+    //- include ../static/media-query/home-media.css
+block content
+    div.container
+        h1 Register
+        form#my_Form(action="/register", method="post") 
+            input#name(type="text", name="name", placeholder="Enter your name" required)
+            input#email(type="email", name="email", placeholder="Enter your email" required)
+            input#password(type="password", name="password", placeholder="Enter your password" required)
+            button.btn(type="submit") Register
+        a(href="/login") Come to login page 

@@ -1,0 +1,9 @@
+#Episode-Container a {
+  text-decoration: none;
+  background-color: rgba(46, 43, 50, 0.85);
+  border-radius: 0.5vh;
+  padding: 1.5vh 3vw;
+  margin: 2vh 1vw;
+  font-size: 4vh;
+  color: white;
+  }

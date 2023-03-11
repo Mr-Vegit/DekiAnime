@@ -1,0 +1,22 @@
+extends template.pug
+
+block scripts
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.3.3/hls.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js")
+block style 
+  style
+    include ../static/css/videoPlayer.css
+    include ../static/css/media.css
+    //- include ../static/media-query/home-media.css
+block content
+  div#video-name.hide #{episodeName}
+  div#video-num.hide #{episodeId}
+  div#video-id.hide #{AnimeId}
+  div#video-img.hide #{img}
+  div.artplayer-app 
+  div.prev-next
+    a.prev-next-btn#prev Prev 
+    a.prev-next-btn#animeDownloadLink(href="#") Download
+    a.prev-next-btn#animeLink Anime
+    a.prev-next-btn#next next 
+  script(src='../static/js/videoPlayer.js' type='module')   

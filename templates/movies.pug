@@ -1,0 +1,28 @@
+extends template.pug
+block scripts
+block style 
+  style
+    include ../static/css/index.css
+    include ../static/css/media.css
+    //- include ../static/media-query/home-media.css
+block content
+  p#pagename.hide #{page} 
+  section#recents-anime
+    h1#popular-heading Movies
+    div#recents-anime-container
+      template.recents-anime-template
+        div.recents-anime-cards
+          a.recents-anime-link(href="#")
+            img.recents-anime-img
+          p.recents-anime-title
+  section#pages 
+    a.first-page(href="/movies") First page
+    div.pages-div
+      a.pages-a 
+      a.pages-a 
+      a.pages-a 
+      a.pages-a  
+      a.pages-a   
+    a.last-page(href="/movies/500") Last page 
+    script(src='../static/js/movies.js' type='module')   
+    //- p#type.hide #{type} 

@@ -1,0 +1,45 @@
+extends template.pug
+
+block scripts
+block style 
+  style
+    include ../static/css/animeDetails.css
+    include ../static/css/media.css
+    include ../static/css/MovieDetails.css
+block content
+  p#animeName.hide #{animeName}
+  div#AnimeDetails-container
+    div.anime-title-div 
+      p.anime-title 
+    div.anime-img-Also-details
+      div#anime-img-Also
+        img#anime-img(src="#")
+      div.anime-details
+        div.anime-title-div 
+          p.anime-title.animeListed
+        div 
+          p#anime-other-names 
+        div 
+          p#anime-description
+        div.question-section 
+          p.question Genre:
+          div.anime-genre-container
+        div.question-section 
+          p.question Total Episodes:
+          p.anime-total-episodes
+        div.question-section 
+          p.question Type:
+          p.anime-type 
+        div.question-section 
+          p.question Released Date:
+          p.anime-releaseDate
+        div.question-section 
+          p.question Status:
+          p.anime-Status.genre-btn
+  div#Episodes
+    div#type-container
+      a#type-Sub(href="#") SUB
+      a#type-Dub(href="#") DUB
+    div#Episode-Container
+
+    script(src="../static/js/MoviesDetails.js" type='module') 

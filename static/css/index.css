@@ -1,0 +1,259 @@
+#watch-history-controls h1 {
+    color: rgb(132, 40, 224);
+    font-size: 5vh;
+    margin: 5vh 0;
+}
+
+#watch-history-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70vw;
+    margin: 0 auto;
+}
+
+#watch-history-controls button {
+    margin: 2vh 2vw;
+    background-color: rgb(6, 0, 22);
+}
+
+#watch-history-controls svg {
+    height: 5vh;
+    display: inline-block;
+}
+
+#watch-history-controls path {
+    fill: rgb(58, 0, 128);
+}
+
+
+#watch-history {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+#watch-history div {
+    text-align: center;
+}
+
+.watch-history-cards {
+    position: relative;
+}
+
+.watch-history-delete {
+    position: absolute;
+    top: 0.3vh;
+    right: 1vw;
+    padding: 0.3vh 0.5vw;
+    border-radius: 2vh;
+    z-index: 3;
+    cursor: pointer;
+}
+.bookmark-delete {
+    position: absolute;
+    top: 1.6vh;
+    right: 2vw;
+    padding: 0.3vh 0.5vw;
+    border-radius: 2vh;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.watch-history-delete svg,
+.bookmark-delete svg {
+    width: 1.3vw;
+    display: inline-block;
+}
+
+.watch-history-delete path,
+.bookmark-delete path {
+    fill: rgb(58, 0, 128);
+}
+
+.watch-history-img {
+    height: 15vw;
+    width: 11vw;
+}
+
+.watch-history-title {
+    margin-top: 10px;
+}
+
+
+#popular-heading {
+    color: rgb(132, 40, 224);
+    font-size: 5vh;
+    margin: 7vh 10vw 2vh;
+}
+
+#recent-head {
+    display: flex;
+    width: 75vw;
+    margin: 3vh auto;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#recent-head>a {
+    color: rgb(132, 40, 224);
+    font-size: 7vh;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.typesubordub a {
+    padding: 1vh 1vw;
+    font-size: 3vh;
+    text-decoration: none;
+    color: white;
+    margin: 0 1vh;
+    border-radius: 1.5vh;
+    background-color: rgb(79 0 157 / 85%);
+    cursor: pointer;
+}
+
+#recents-anime {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#recents-anime-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.recents-anime-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 40vh;
+    width: 15vw;
+    margin: 2vh;
+    cursor: pointer;
+    position: relative;
+}
+
+.recents-anime-link {
+    height: 80%;
+    position: relative;
+}
+
+.recents-anime-img {
+    height: 100%;
+}
+
+.recent-sub-or-dub {
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    color: white;
+    padding: 0.3vh 0.5vw;
+    border-radius: 2vh;
+}
+
+.recents-anime-title {
+    color: white;
+    font-size: 2vh;
+    text-align: center;
+}
+
+.recents-anime-episode {
+    color: white;
+}
+
+#pages {
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2vh auto;
+}
+
+.pages-div {
+    /* width: 50vw; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#pages a {
+    text-decoration: none;
+    background-color: rgb(79 0 157 / 85%);
+    border-radius: 0.5vh;
+    padding: 1vh 1vw;
+    margin: 0vh 0.5vw;
+    color: white;
+}
+
+
+/* Popular Anime */
+#Search-Choose {
+    text-align: center;
+    padding: 3vh;
+    color: rgb(132, 40, 224);
+    cursor: pointer;
+}
+
+.Search-Active {
+    display: none;
+}
+
+.Search-Passive {
+    display: flex;
+}
+
+#Search-Catagories {
+    justify-content: space-around;
+    flex-direction: column;
+    width: 60vw;
+    padding: 2vh 3vw;
+    margin: 1vh auto;
+    background-color: rgba(30, 24, 39, 0.85);
+}
+
+#Search-Catagories .Type-Catagories {
+    display: flex;
+    align-items: center;
+    /* margin: 2vh 0; */
+    flex-direction: column;
+}
+
+.Type-Catagories div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Type-Catagories div:nth-child(1) {
+    font-size: 5vh;
+    margin-bottom: 3vh;
+}
+
+.Type-Catagories a {
+    background-color: rgba(46, 43, 50, 0.85);
+    border-radius: 0.5vh;
+    padding: 1vh 3vw;
+    margin: 1vh 0.5vw;
+    font-size: 2.5vh;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#search-Anilist {
+    display: block;
+    background-color: #260447;
+    border-radius: 1vh;
+    padding: 0.5vw;
+    text-align: center;
+    font-size: 3vh;
+    text-decoration: none;
+}

@@ -1,0 +1,74 @@
+extends template.pug
+
+block scripts
+block style 
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css")
+  style
+    include ../static/css/animeDetails.css
+    include ../static/css/media.css
+    //- include ../static/media-query/home-media.css
+block content
+  p#animeName.hide #{animeName}
+  p#Dub.hide #{dub}
+  div#AnimeDetails-container
+    div.anime-title-div 
+      p.anime-title 
+    div.anime-img-Also-details
+      div#anime-img-Also
+        img#anime-img(src="#")
+        a#bookmark-link(href="#") Bookmark 
+      div.anime-details
+        div.anime-title-div 
+          p.anime-title.animeListed
+        //- div 
+        //-   p#anime-other-names 
+        div 
+          p#anime-description
+        div.question-section 
+          p.question Genre:
+          div.anime-genre-container
+        div.question-section 
+          p.question Total Episodes:
+          p#anime-total-episodes
+        div.question-section 
+          p.question Type:
+          p#anime-type 
+        div.question-section 
+          p.question Released Date:
+          p#anime-releaseDate
+        div.question-section 
+          p.question Status:
+          p#anime-Status.genre-btn
+  div#recomendations-btn
+    h1 Recomendations
+    div#controls
+      button.previous
+        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512")
+          path(d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM231 127c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-71 71L376 232c13.3 0 24 10.7 24 24s-10.7 24-24 24l-182.1 0 71 71c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L119 273c-9.4-9.4-9.4-24.6 0-33.9L231 127z")
+      button.next 
+        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512")
+          path(d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z")
+  div#recomendations
+    div.my-slider
+    template.recommendation-template 
+      div.recommendation-cards.slide
+        a.recommendation-cards-img-container(href="#")
+          img.recommendation-img
+        div.recommendation-cards-txt-container
+          p.recommendation-cards-txt
+  div#Episodes
+    div#type-container
+      a#type-Sub(href="#") SUB
+      a#type-Dub(href="#") DUB
+    div#Episode-Container
+      template.Episode-template 
+        div.Episode-cards
+          a.Episode-img-container(href="#")
+            img.Episode-img
+          div.Episode-cards-txt-container
+            p.Episode-cards-txt
+  script(src="../static/js/animeDetails.js" type='module') 
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js") 
+    //-     let episodeName = data.episodes[i].id;
+    //- let AnimeName = episodeName.replace(`${"-episode-"+i}`,"")
+    //- AnimeLink.href = '/'+'anime-watch'+'/'+AnimeName+'?'+"id="+data.episodes[i].number+"&num="+data.id;
