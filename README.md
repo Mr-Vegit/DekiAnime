@@ -2,6 +2,8 @@
 # DekiAnime
 
 This project is an ad free anime website made using pug, js, css and nodejs 
+You can check the deployed version by [clicking here](dekianime.site)
+NOTE: This project is designed for local use only if you want to deploy it on any hosting service you will need to change some code 
 
 ## Acknowledgements
 
