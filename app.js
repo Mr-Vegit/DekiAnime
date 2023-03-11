@@ -8,6 +8,8 @@ const gogoanime = new ANIME.Gogoanime();
 const anilist = new META.Anilist();
 const fs = require('fs')
 const user = JSON.parse(fs.readFileSync('data.json'))
+
+
 // EXPRESS SPECIFIC STUFF
 app.use('/static', express.static('static')); //For serving static files
 app.use('/img', express.static(path.join(__dirname, 'static/img')));
@@ -18,6 +20,8 @@ app.use(express.urlencoded({ extended: false }))
 // PUG SPECIFIC STUFF
 app.set('view engine', 'pug'); // set the template engine as pug
 app.set('views', path.join(__dirname, 'templates')); //set the views directory
+
+
 // Functions 
 const removeByAttr = function (arr, attr, value) {
     var i = arr.length;
@@ -32,6 +36,8 @@ const removeByAttr = function (arr, attr, value) {
     }
     return arr;
 }
+
+
 //END_POINTS
 app.get('/', (req, res) => {
     const params = { "type": "recent-release", "episodeId": '1' }
@@ -42,11 +48,6 @@ app.get('/recent-release/:id', (req, res) => {
     const type = req.query.type;
     const loremed = { "episodeId": id, "type": type }
     res.status(200).render('index.pug', loremed)
-})
-app.get('/watch-history-delete/:episode', (req, res) => {
-    const episode = req.params.episode;
-    removeByAttr(user[0].recent, 'episodeName', episode)
-    res.redirect('/')
 })
 app.get('/Popular-Anime', (req, res) => {
     const params = { "episodeId": "1" }
@@ -60,14 +61,18 @@ app.get('/Popular-Anime/:id', (req, res) => {
     const loremed = { "episodeId": id }
     res.status(200).render('popularAnime.pug', loremed)
 })
-
+app.get('/watch-history-delete/:episode', (req, res) => {
+    const episode = req.params.episode;
+    removeByAttr(user[0].recent, 'episodeName', episode)//Delete the required episode
+    res.redirect('/')
+})
 app.get('/anime-watch/:episode', async (req, res) => {
     const id = req.query.id;
     const Animenum = req.query.num;
     const episode = req.params.episode;
     const Animeimg = req.query.img;
-    await removeByAttr(user[0].recent,'episodeName',episode)
-    await user[0].recent.push({
+    await removeByAttr(user[0].recent,'episodeName',episode)//It removes previous episode data stored under recents 
+    await user[0].recent.push({//Uploads new episode data under recents
             img: Animeimg,
             episodeName: episode,
             episodeNum: id,
@@ -79,8 +84,8 @@ app.get('/bookmark-save', async (req, res) => {
     const animeId = req.query.animeId;
     const animeTitle = req.query.animeTitle;
     const animeImg = req.query.img;
-    await removeByAttr(user[0].bookmark,'animeId',animeId)
-    await user[0].bookmark.push({
+    await removeByAttr(user[0].bookmark,'animeId',animeId)//It removes previous anime data stored under bookmark
+    await user[0].bookmark.push({//uploads new anime data under bookmark
                 animeId: animeId,
                 Image: animeImg,
                 title: animeTitle
@@ -89,7 +94,7 @@ app.get('/bookmark-save', async (req, res) => {
 })
 app.get('/bookmark-delete', (req, res) => {
     const animeId = req.query.animeId;
-    removeByAttr(user[0].bookmark,'animeId',animeId)
+    removeByAttr(user[0].bookmark,'animeId',animeId)//deletes required anime data under bookmark
     res.redirect('/bookmark')
 })
 app.get('/anime-details/:anime', (req, res) => {
@@ -131,9 +136,12 @@ app.get("/anime-list/:page", (req, res) => {
     res.status(200).render('anime-list.pug', loremed)
 })
 
+// USER DATA
+app.get('/user-data', async (req, res) => {
+    res.status(200).json(user)
+})
 
 // API INFO
-
 app.get('/Gogoanime/recent-release', async (req, res) => {
     const type = +req.query.type
     const page = +req.query.page
@@ -160,11 +168,7 @@ app.get('/anilist/anime-movies', async (req, res) => {
         });
     })
 })
-app.get('/user-data', async (req, res) => {
-    res.status(200).json(user)
-})
 app.get('/anilist/info/:id', async (req, res) => {
-    // const params = { "type": main }
     const id = req.params.id;
     const dub = Boolean(req.query.dub);
     anilist.fetchAnimeInfo(id, dub).then(data => {
@@ -204,6 +208,8 @@ app.get('/anilist/trending', async (req, res) => {
         });
     })
 })
+
+// This end point only works while using vpn
 // app.get('/anilist/watch/:id', async (req, res) => {
 //     const id = req.params.id;
 //     anilist.fetchEpisodeSources(id).then(data => {
@@ -216,6 +222,8 @@ app.get('/anilist/trending', async (req, res) => {
 //         });
 //     })
 // })
+
+// Updating data of the user
 setInterval(()=>{
     fs.writeFileSync('data.json', JSON.stringify(user, null, 2))
 },60000)
