@@ -48,7 +48,7 @@ data = RecentlyWatched[0].recent.slice(0).reverse().map(user => {
         AnimeTitle.textContent = limitWord(info, 7);
         AnimeEpisode.textContent = "episode : " + user.episodeNum;
         AnimeImg.src = user.img;
-        AnimeLink.href = '/watch-delete-previous/' + user.episodeName + '?' + "id=" + user.episodeNum + "&num=none&img=" + user.img;
+        AnimeLink.href = '/anime-watch/' + user.episodeName + '?' + "id=" + user.episodeNum + "&num=none&img=" + user.img;
         DeleteEpisode.href = '/watch-history-delete/' + user.episodeName;
         RecentlyWatchedContainer.append(card);
         return { element: card };
