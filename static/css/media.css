@@ -63,8 +63,8 @@
     }
 
     .watch-history-img {
+        aspect-ratio: 7/9;
         height: 30vw;
-        width: 23vw;
     }
 
     #watch-history {
@@ -80,10 +80,11 @@
     .bookmark-delete svg {
         width: 5vw;
     }
-    .bookmark-delete{
-        right: 4vw;
+
+    .bookmark-delete {
+        right: 0vw;
     }
-    
+
     #recent-head {
         display: flex;
         width: 100%;
@@ -103,10 +104,12 @@
         margin: 0 0.4vh;
         border-radius: 1vh;
     }
-
+    #recents-anime-container {
+        justify-content: space-around;
+    }
     .recents-anime-cards {
-        height: 30vh;
-        width: 41vw;
+        height: 40vh;
+        width: 30vw;
     }
 
     .recent-sub-or-dub {
@@ -194,8 +197,8 @@
     }
 
     .anime-img-Also-details img {
+        aspect-ratio: 6/9;
         height: 30vh;
-        width: 50vw;
         text-align: center;
     }
 
@@ -232,7 +235,7 @@
     }
 
     .recommendation-img {
-        height: 15vh;
+        height: 20vh;
     }
 
     #Episodes {
@@ -253,6 +256,7 @@
     }
 
     #Episode-Container img {
+        aspect-ratio: 5/4;
         height: 10vh;
     }
 

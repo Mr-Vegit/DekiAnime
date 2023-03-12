@@ -71,8 +71,8 @@
 }
 
 .watch-history-img {
+    aspect-ratio: 6/9;
     height: 15vw;
-    width: 11vw;
 }
 
 .watch-history-title {
@@ -146,6 +146,7 @@
 }
 
 .recents-anime-img {
+    aspect-ratio: 6/9;
     height: 100%;
 }
 

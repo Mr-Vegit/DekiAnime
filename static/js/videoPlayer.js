@@ -3,7 +3,7 @@ let episodeNum = document.getElementById("video-num").textContent.trim();
 let AnimeId = document.getElementById("video-id").textContent.trim();
 let AnimeImg = document.getElementById("video-img").textContent.trim();
 let episodeId = episodeName + "-episode-" + episodeNum;
-let proxy = "https://cors.delusionz.xyz/";
+let proxy = "https://cors.dekianime.site/";
 var videoSrc = "";
 let NumberOfAnime = 0;
 let AnimeName = document.getElementById('animeLink')
@@ -30,19 +30,12 @@ console.log(episodeId);
 const response = await fetch("https://api.consumet.org/meta/anilist/watch/" + episodeId);
 const animePlayLinks = await response.json();
 console.log(animePlayLinks);
-var count = Object.keys(animePlayLinks.sources).length;
-let Qualitynum = 0;
-for (let i = 0; i < count; i++) {
-  if (animePlayLinks.sources[i].quality.includes("default")) {
-    Qualitynum = i;
-  }
-}
 let linkQuality = animePlayLinks.sources.map(user => ({
   html: user.quality, url: proxy+user.url
 }));
 const art = new Artplayer({
   container: '.artplayer-app',
-  url: proxy+linkQuality[Qualitynum].url,
+  url: proxy+linkQuality[0].url,
   type: 'm3u8',
   // isLive: true,
   playbackRate: true,
