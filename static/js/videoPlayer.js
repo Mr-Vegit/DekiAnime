@@ -27,7 +27,7 @@ function playM3u8(video, url, art) {
   }
 }
 console.log(episodeId);
-const response = await fetch("https://api.consumet.org/meta/anilist/watch/" + episodeId);
+const response = await fetch(proxy+"https://api.consumet.org/meta/anilist/watch/" + episodeId);
 const animePlayLinks = await response.json();
 console.log(animePlayLinks);
 let linkQuality = animePlayLinks.sources.map(user => ({
