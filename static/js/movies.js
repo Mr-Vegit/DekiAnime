@@ -7,6 +7,8 @@ let pagename = "page="+page;
 let users=[];
 const response = await fetch('/anilist/anime-movies?'+pagename+"&perPage=25");
 const Movies = await response.json();
+
+// ANIME CARD GENERATOR
 users = Movies.results.map(user => {
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const AnimeTitle = card.querySelector(".recents-anime-title");
@@ -18,48 +20,18 @@ users = Movies.results.map(user => {
     userCardContainer.append(card); 
     return { name:user.episodeId,element:card};
 });
-let pagenum=parseInt(page,10)
-let pages_li = Array.from(document.getElementsByClassName('pages-a'))
-if (pagenum<=2) {
-    pagenum=2
-    let object = [
-        {id:pagenum,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-    ]
-    pages_li.forEach((element, i) => {
-       element.innerHTML = object[i].num  
-       element.href = object[i].link  
-    });
-}else if(pagenum>2){
-    pagenum++;
-    let object = [
-        {id:pagenum,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-    ]
-    pages_li.forEach((element, i) => {
-       element.innerHTML = object[i].num  
-       element.href = object[i].link  
-    });
 
+
+// PAGE GENERATOR
+let pagenum = +page;
+let pages_li = Array.from(document.getElementsByClassName('pages-a'))
+if (pagenum >= 498) {
+    pagenum = 498;
+}else if(pagenum <=3){
+    pagenum = 3;
 }
-else{
-    pagenum=2
-    let object = [
-        {id:pagenum,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-    ]
-    pages_li.forEach((element, i) => {
-       element.innerHTML = object[i].num  
-       element.href = object[i].link  
-    });
-}
+pagenum =pagenum-2;
+pages_li.forEach((element) => {
+    element.innerHTML = pagenum++;
+    element.href = `/movies/${pagenum-1}`
+});

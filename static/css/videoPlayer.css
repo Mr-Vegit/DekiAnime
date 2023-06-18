@@ -12,8 +12,9 @@
     justify-content: space-between;
 }
 .prev-next-btn{
-    background-color: rgb(63, 9, 113);
-    text-decoration: none;
-    color: white;
-    padding: 1vh 1vw;
+	background-color: #160085;
+	text-decoration: none;
+	color: white;
+	padding: 1vh 1vw;
+	border-radius: 1vh;
 }

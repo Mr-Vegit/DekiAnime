@@ -6,9 +6,10 @@ let key = document.getElementById("key").textContent.trim();
 let page = document.getElementById("pagename").textContent.trim();
 let pagename = "page="+page;
 let users=[];
-
 const response = await fetch('/anilist/search/'+key+'?'+pagename+"&perPage=25",params);
 const search = await response.json();
+
+// ERROR HANDLER & FUNCTIONS
 if (!response.ok) {
     throw new Error ("bad response",{
         cause:{response}
@@ -21,7 +22,8 @@ if (count ===0) {
 function limitWord(str, no_words) {
     return str.split(" ").splice(0,no_words).join(" ");
 }
-console.log(search);
+
+// ANIME CARD GENERATOR
 users = search.results.map(user => {
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const AnimeTitle = card.querySelector(".recents-anime-title");
@@ -36,36 +38,16 @@ users = search.results.map(user => {
     return { name: user.id, element: card };
 });
 
-
-let pagenum=parseInt(page,10)
+// PAGE GENERATOR
+let pagenum = +page;
 let pages_li = Array.from(document.getElementsByClassName('pages-a'))
-if(pagenum>2){
-    pagenum++;
-    let object = [
-        {id:pagenum,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-    ]
-    pages_li.forEach((element, i) => {
-       element.innerHTML = object[i].num  
-       element.href = object[i].link  
-    });
-
+if (pagenum >= 498) {
+    pagenum = 498;
+}else if(pagenum <=3){
+    pagenum = 3;
 }
-else{
-    pagenum=2
-    let object = [
-        {id:pagenum,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-        {id:pagenum++,num:pagenum,link:"/movies/"+pagenum},
-    ]
-    pages_li.forEach((element, i) => {
-       element.innerHTML = object[i].num  
-       element.href = object[i].link  
-    });
-}
+pagenum =pagenum-2;
+pages_li.forEach((element) => {
+    element.innerHTML = pagenum++;
+    element.href = `/search?keyw=${key}&page=${pagenum-1}`
+});

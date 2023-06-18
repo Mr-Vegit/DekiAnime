@@ -26,6 +26,7 @@
 }
 .anime-img-Also-details img {
     height: 50vh;
+    aspect-ratio: 6/9;
 }
 
 #AnimeDetails-container>.anime-title-div p {
@@ -125,6 +126,7 @@
 
 .recommendation-img {
     height: 15vw;
+    aspect-ratio: 6/9;
 }
 .recommendation-cards-txt-container{
     margin-top: 10px;

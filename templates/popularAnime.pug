@@ -5,58 +5,65 @@ block style
   style
     include ../static/css/index.css
     include ../static/css/media.css
-    //- include ../static/media-query/home-media.css
 block content
   p#pagename.hide #{episodeId} 
-  h1(onclick="openSearch()")#Search-Choose FILTER (ADVANCED SEARCH) &plus;
+  h1(onclick="openSearch()")#Search-Choose FILTER (ADVANCED SEARCH)
   section#Search-Catagories.Search-Active 
+
+    div.Query-Search
+     input#Query-Search-Input(type="search",placeholder="Search Animes")
+    div.filter_heading Filter
+    div#one_option_needed  
+      div.Type-Catagories
+        label(for="Season-Options").Season-Card-Name Season:
+        select(name="Season")#Season-Options
+          option(value="" selected) ALL
+          option(value="WINTER") WINTER
+          option(value="SPRING") SPRING
+          option(value="SUMMER") SUMMER
+          option(value="FALL") FALL
+      div.Type-Catagories
+        label(for="Format-Options").Format-Card-Name Format:
+        select(name="Format")#Format-Options
+          option(value="" selected) ALL
+          option(value="TV") TV
+          option(value="TV_SHORT") TV_SHORT
+          option(value="OVA") OVA
+          option(value="ONA") ONA
+          option(value="MOVIE") MOVIE
+          option(value="SPECIAL") SPECIAL
+          option(value="MUSIC") MUSIC
+      div.Type-Catagories
+        label(for="Status-Options").Status-Card-Name Status:
+        select(name="Status")#Status-Options
+          option(value="" selected) ALL
+          option(value="RELEASING") RELEASING
+          option(value="NOT_YET_RELEASING") NOT_YET_RELEASING
+          option(value="FINISHED") FINISHED
+          option(value="CANCELLED") CANCELLED
     div.Type-Catagories
-      div.Season-Card-Name season:
-      div#Season-Options 
-        p WINTER
-        p SPRING
-        p SUMMER
-        p FALL
-    div.Type-Catagories
-      div.Format-Card-Name format:
-      div#Format-Options
-        p TV
-        p TV_SHORT
-        p OVA
-        p ONA
-        p MOVIE
-        p SPECIAL
-        p MUSIC
-    div.Type-Catagories
-      div.Genres-Card-Name genres
+      div.filter_heading.Genres-Card-Name Genre
       div#Genres-Options
-        a(href="/anime-list?genre=Action")  Action
-        a(href="/anime-list?genre=Adventure")  Adventure
-        a(href="/anime-list?genre=Cars")  Cars
-        a(href="/anime-list?genre=Comedy")  Comedy
-        a(href="/anime-list?genre=Drama")  Drama
-        a(href="/anime-list?genre=Fantasy")  Fantasy
-        a(href="/anime-list?genre=Horror")  Horror
-        a(href="/anime-list?genre=Mahou Shoujo")  Mahou Shoujo
-        a(href="/anime-list?genre=Mecha")  Mecha
-        a(href="/anime-list?genre=Music")  Music
-        a(href="/anime-list?genre=Mystery")  Mystery
-        a(href="/anime-list?genre=Psychological")  Psychological
-        a(href="/anime-list?genre=Romance")  Romance
-        a(href="/anime-list?genre=Sci-Fi")  Sci-Fi
-        a(href="/anime-list?genre=Slice of Life")  Slice of Life
-        a(href="/anime-list?genre=Sports")  Sports
-        a(href="/anime-list?genre=Supernatural")  Supernatural
-        a(href="/anime-list?genre=Thriller")  Thriller
-    //- div.Type-Catagories
-    //-   div.Status-Card-Name status:
-    //-   div#Status-Options
-    //-     p RELEASING
-    //-     p NOT_YET_RELEASED
-    //-     p FINISHED
-    //-     p CANCELLED
-    //-     p HIATUS
-    //- a#search-Anilist(href="#") Search
+        p.genre_Inactive Action
+        p.genre_Inactive Adventure
+        p.genre_Inactive Cars
+        p.genre_Inactive Comedy
+        p.genre_Inactive Drama
+        p.genre_Inactive Fantasy
+        p.genre_Inactive Horror
+        p.genre_Inactive Mahou Shoujo
+        p.genre_Inactive Mecha
+        p.genre_Inactive Music
+        p.genre_Inactive Mystery
+        p.genre_Inactive Psychological
+        p.genre_Inactive Romance
+        p.genre_Inactive Sci-Fi
+        p.genre_Inactive Slice of Life
+        p.genre_Inactive Sports
+        p.genre_Inactive Supernatural
+        p.genre_Inactive Thriller
+    p#search-Anilist(href="#") Search
+    a#search_Url(href='')
   section#recents-anime
     h1#popular-heading Popular Anime
     div#recents-anime-container
@@ -66,12 +73,13 @@ block content
             img.recents-anime-img
           p.recents-anime-title
   section#pages 
-    a.first-page(href="/Popular-Anime") First page
+    p#first-page First page
     div.pages-div
-      a.pages-a 
-      a.pages-a 
-      a.pages-a 
-      a.pages-a  
-      a.pages-a   
-    a.last-page(href="/Popular-Anime/500") Last page 
+      p.pages-a 
+      p.pages-a 
+      p.pages-a 
+      p.pages-a  
+      p.pages-a   
+    p#last-page Last page 
   script(src='../static/js/popularAnime.js' type='module') 
+

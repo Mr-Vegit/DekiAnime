@@ -1,10 +1,18 @@
+let UserName = document.getElementById("user").textContent.trim();
 const userCardTemplate = document.querySelector('.recents-anime-template');
 const userCardContainer = document.querySelector('#recents-anime-container');
 // let proxy = 'https://cors.consumet.stream/';
 let users = [];
+let Movies = [];
+if (UserName==="anonymous") {
+    let x = JSON.parse(localStorage.getItem('MyAnimeData'))
+    Movies = x.bookmark;
+}else{
 const response = await fetch('/user-data');
-const Movies = await response.json();
-users = Movies[0].bookmark.slice(0).reverse().map(user => {
+let x = await response.json();
+Movies = x.bookmark;
+}
+users = Movies.slice(0).reverse().map(user => {
     const card = userCardTemplate.content.cloneNode(true).children[0];
     const AnimeTitle = card.querySelector(".recents-anime-title");
     const AnimeImg = card.querySelector('.recents-anime-img');

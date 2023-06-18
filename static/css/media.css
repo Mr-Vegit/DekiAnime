@@ -8,25 +8,9 @@
     #navbar .search {
         display: none;
     }
-
-    .search svg {
-        height: 2vh;
-    }
-
-    .search input {
-        font-size: 2vh;
-        padding: 0vh;
-    }
-
-    .search svg {
-        height: 2vh;
-        display: flex;
-    }
-
     .logo a img {
         height: 6vh;
     }
-
     .search input {
         background-color: #111;
         border-bottom: 1px solid white;
@@ -34,16 +18,20 @@
         /* padding: 1vh; */
         width: 43vw;
     }
-
     #footer {
         margin-top: 10vh;
         height: 32vh;
     }
-
-    .footer-2 h1 {
-        font-size: 2vh;
+    .footer-2 {
+        align-items: center;
     }
-
+    .footer-2-links{
+        display: none;
+    }
+    .footer-2 h1 {
+        font-size: 3vh;
+        text-align: center;
+    }
     .footer-3 {
         font-size: 2vh;
         width: 90%;
@@ -59,12 +47,16 @@
     }
 
     #watch-history-controls h1 {
-        font-size: 4vh;
+        font-size: 3vh;
+    }
+
+    #watch-history-controls svg {
+        height: 3vh;
     }
 
     .watch-history-img {
-        aspect-ratio: 7/9;
         height: 30vw;
+        width: 23vw;
     }
 
     #watch-history {
@@ -82,7 +74,7 @@
     }
 
     .bookmark-delete {
-        right: 0vw;
+        right: 4vw;
     }
 
     #recent-head {
@@ -99,17 +91,26 @@
     }
 
     .typesubordub a {
-        padding: 1vh 2vw;
-        font-size: 1.7vh;
-        margin: 0 0.4vh;
+        padding: 1vh 2.5vw;
+        font-size: 1.1vh;
+        margin: 0px 1vh;
         border-radius: 1vh;
     }
-    #recents-anime-container {
-        justify-content: space-around;
-    }
+
     .recents-anime-cards {
-        height: 40vh;
-        width: 30vw;
+        height: 30vh;
+        width: 41vw;
+    }
+
+    .recents-anime-title,
+    .recents-anime-episode,
+    .watch-history-title,
+    .watch-history-episode,
+    .recommendation-cards-txt,
+    .Episode-cards-txt {
+        color: white;
+        font-size: 1.3vh;
+        text-align: center;
     }
 
     .recent-sub-or-dub {
@@ -119,7 +120,7 @@
     #pages a {
         padding: 1vh 3vw;
         margin: 1vh 2vw;
-        font-size: 2vh;
+        font-size: 1.3vh;
     }
 
     #popular-heading {
@@ -130,13 +131,21 @@
         width: 85vw;
     }
 
-    .Type-Catagories a {
+    .Type-Catagories a ,.Query-Search input{
         font-size: 2vh;
     }
+    #one_option_needed>.Type-Catagories {
+        padding: 1vh 3vw;
+        margin: 1vh 1vw;
+    }
 
-    .search {
-        display: flex;
-        justify-content: center;
+    #one_option_needed {
+        justify-content: flex-start;
+    }
+
+    #Genres-Options p {
+        font-size: 1.5vh;
+        padding: 1vh 2vw;
     }
 
     /* Video player */
@@ -180,6 +189,10 @@
         display: none;
     }
 
+    #controls {
+        display: none;
+    }
+
     .anime-details>.anime-title-div p {
         color: white;
         font-size: 4vh;
@@ -197,8 +210,8 @@
     }
 
     .anime-img-Also-details img {
-        aspect-ratio: 6/9;
         height: 30vh;
+        width: 50vw;
         text-align: center;
     }
 
@@ -227,15 +240,15 @@
     }
 
     #recomendations {
-        width: 90vw;
+        width: 100vw;
     }
 
     .recommendation-cards {
-        height: 30vh;
+        height: 26vh;
     }
 
     .recommendation-img {
-        height: 20vh;
+        height: 15vh;
     }
 
     #Episodes {
@@ -251,21 +264,18 @@
     }
 
     .Episode-cards-txt {
+        width: 16vh;
         padding: 1vh;
-        font-size: 2vh;
     }
 
     #Episode-Container img {
-        aspect-ratio: 5/4;
         height: 10vh;
     }
 
-    .Episode-cards-txt {
-        width: 16vh;
-    }
-
     #recomendations-btn {
-        width: 95vw;
+        width: 100vw;
+        justify-content: center;
+        margin: 3vh 0;
     }
 
     #Episode-Container {
@@ -274,10 +284,10 @@
 
     /* Login and register */
     #my_Form input {
-        width: 90%;
-        padding: 10px 10px;
+        width: 75%;
+        padding: 15px;
         margin: 10px;
-        font-size: 3vh;
+        font-size: 2vh;
         text-align: center;
     }
 

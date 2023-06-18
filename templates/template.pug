@@ -1,7 +1,9 @@
 html
   head
-    meta(name="robots" content="NOINDEX,NOFOLLOW")
+    meta(name="robots" content="INDEX,FOLLOW")
     meta(content="width=device-width, initial-scale=1" name="viewport")
+    meta(name="description" content = "Welcome to Dekianime, your ultimate destination for all things anime! Immerse yourself in a world filled with captivating stories, stunning visuals, and unforgettable characters. Dekianime is a premier streaming platform dedicated to bringing you a vast collection of anime series and movies, all at your fingertips.At Dekianime, we believe in celebrating the vibrant and diverse world of anime. Our carefully curated library showcases a wide range of genres, from action-packed shounen adventures to heartwarming slice-of-life tales and everything in between. Whether you're a seasoned otaku or just dipping your toes into the anime universe, Dekianime has something to offer for every taste and preference." )
+    meta(name="keywords" content="dekiAnime , dekianime.site, watch dekianime, Anime streaming, Watch anime online, Anime series, Anime movies, Japanese animation, Otaku culture, Anime catalog, HD streaming, Latest anime releases, Classic anime, Shounen anime, Slice-of-life anime, Fantasy anime, Action anime, Romance anime, Comedy anime, Anime community")
     //- link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")
     //- Check its version from https://cdnjs.com/libraries/font-awesome
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/csfont-awesome.min.css")
@@ -13,10 +15,12 @@ html
       include ../static/css/media.css
     //-   include ../static/css/nav-footer-media.css
   body
+    p#user.hide #{user} 
     nav#navbar
       div.logo
         a(href="/")
-          img(src="../static/img/logo.png")
+          img(src="../static/img/logo.jpg")
+          p DekiAnime
       ul
         li.item
           a(href="/") Home
@@ -27,10 +31,7 @@ html
         li.item
           a(href="/movies") Movies
         li.Search.item 
-          input#Search-Input(type="text", name="",placeholder="Search Animes")
-          a#Search-link(href="#") 
-            svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512")
-              path(d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z")
+          input#Search-Input(type="search", name="",placeholder="Search Animes")
       div.logo.three-lines(onclick="openNav()") &equiv;
     div#mySidenav.sidenav
       ul 
@@ -45,13 +46,10 @@ html
         li 
           a(href="/movies") Movies
         li.Search 
-          input#Search-Side(type="text", name="",placeholder="Search Animes")
-          a#Search-Side-link(href="#") 
-            svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512")
-              path(d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z")
+          input#Search-Side(type="search", name="",placeholder="Search Animes")
         li 
           form(action="/logout?_method=delete" method="POST") 
-              button(type="submit") Log Out  
+              button#Login_Logout_Btn(type="submit") Log Out  
         
     block content
     script(src='../static/js/navbar.js') 
@@ -60,7 +58,7 @@ html
         span
           | DekiAnime
       div.footer-2
-        div
+        div.footer-2-links
           h1
             | Important links
           ul

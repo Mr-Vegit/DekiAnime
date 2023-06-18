@@ -1,9 +1,33 @@
+let UserName = document.getElementById("user").textContent.trim();
 const userCardTemplate = document.querySelector('.recents-anime-template');
 const userCardContainer = document.querySelector('#recents-anime-container');
 const RecentlyWatchedTemplate = document.querySelector('.watch-history-template');
 const RecentlyWatchedContainer = document.querySelector('.my-slider');
 let users = [];
 const params = { method: 'GET' };
+let RecentlyWatched =[];
+
+
+// SAVE DATA IN BROWSER
+if (UserName==="anonymous") {
+    // localStorage.clear();
+    if(localStorage.getItem('MyAnimeData') ===null){
+        let MyAnimeData = {
+            WatchHistory: [],
+            bookmark: [],
+        }
+        localStorage.setItem('MyAnimeData',JSON.stringify(MyAnimeData));
+    }
+    let x = JSON.parse(localStorage.getItem('MyAnimeData'))
+    console.log(x);
+    RecentlyWatched = x.WatchHistory;
+}
+else{
+    const respond = await fetch('/user-data');
+    let x = await respond.json();
+    RecentlyWatched = x.recent;
+}
+
 // let proxy = 'https://cors.consumet.stream/';
 let page = document.getElementById("pagename").textContent.trim();
 let type = document.getElementById("type").textContent.trim();
@@ -31,32 +55,36 @@ function limitWord(str, no_words) {
     return str.split(" ").splice(0, no_words).join(" ");
 }
 console.log(animeRecents);
-let data = [];
-const respond = await fetch('/user-data');
-const RecentlyWatched = await respond.json();
-console.log(RecentlyWatched);
-data = RecentlyWatched[0].recent.slice(0).reverse().map(user => {
+let RecentlyWatched_Data = RecentlyWatched.slice(0).reverse().map(user => {
     const card = RecentlyWatchedTemplate.content.cloneNode(true).children[0];
     const AnimeTitle = card.querySelector(".watch-history-title");
     const AnimeImg = card.querySelector('.watch-history-img');
     const AnimeLink = card.querySelector('.watch-history-link');
     const AnimeEpisode = card.querySelector('.watch-history-episode');
     const DeleteEpisode = card.querySelector('.watch-history-delete');
-    try {
-        let episodeName = user.episodeName
-        let info = episodeName.replace(/[/-]/g, ' ');
-        AnimeTitle.textContent = limitWord(info, 7);
-        AnimeEpisode.textContent = "episode : " + user.episodeNum;
-        AnimeImg.src = user.img;
-        AnimeLink.href = '/anime-watch/' + user.episodeName + '?' + "id=" + user.episodeNum + "&num=none&img=" + user.img;
+    let episodeName = user.episodeName
+    let info = episodeName.replace(/[/-]/g, ' ');
+    AnimeTitle.textContent = limitWord(info, 7);
+    AnimeEpisode.textContent = "episode : " + user.episodeNum;
+    AnimeImg.src = user.img;
+    AnimeLink.href = '/watch-delete-previous/' + user.episodeName + '?' + "id=" + user.episodeNum + "&num=none&img=" + user.img;
+    if (UserName==="anonymous") {//DELETE FROM BROWSER
+        DeleteEpisode.onclick = ()=>{
+            let x = JSON.parse(localStorage.getItem('MyAnimeData'))
+            let y = x.WatchHistory.filter(e=>e.episodeName!==user.episodeName)
+            console.log(y);
+            x.WatchHistory = y;
+            localStorage.setItem('MyAnimeData',JSON.stringify(x));
+            window.location.reload();
+        };
+    }
+    else{
         DeleteEpisode.href = '/watch-history-delete/' + user.episodeName;
-        RecentlyWatchedContainer.append(card);
-        return { element: card };
-    
-} catch (error) {
-    console.log(error);
-}
+    }
+    RecentlyWatchedContainer.append(card);
+    return { element: card };
 });
+console.log(RecentlyWatched);
 const slider = tns({
     container: ".my-slider",
     "slideBy": 1,
@@ -96,7 +124,7 @@ users = animeRecents.results.map(user => {
     AnimeEpisode.textContent = 'episode ' + user.episodeNumber;
     AnimeSuborDub.textContent = subOrDub;
     AnimeImg.src = user.image;
-    AnimeLink.href = '/anime-watch/' + user.id + '?' + "id=" + user.episodeNumber + "&num=none&img=" + user.image;
+    AnimeLink.href = '/watch-delete-previous/' + user.id + '?' + "id=" + user.episodeNumber + "&num=none&img=" + user.image;
     userCardContainer.append(card);
     return { name: user.episodeId, sub: subOrDub, elem: AnimeSuborDub, element: card };
 });
@@ -107,51 +135,20 @@ users.forEach(user => {
         user.elem.style.backgroundColor = "red";
     }
 });
-let pagenum = parseInt(page, 10)
-let pages_li = Array.from(document.getElementsByClassName('pages-a'))
-let first_page = document.getElementById("first-page")
-let last_page = document.getElementById("last-page")
-first_page.href = "/recent-release/1" + "?" + "type=" + correcttype;
-last_page.href = "/recent-release/22" + "?" + "type=" + correcttype;
-if (pagenum <= 2) {
-    pagenum = 2
-    let object = [
-        { id: pagenum, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-    ]
-    pages_li.forEach((element, i) => {
-        element.innerHTML = object[i].num
-        element.href = object[i].link
-    });
-} else if (pagenum > 2) {
-    pagenum++;
-    let object = [
-        { id: pagenum, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-    ]
-    pages_li.forEach((element, i) => {
-        element.innerHTML = object[i].num
-        element.href = object[i].link
-    });
 
+
+// PAGE GENERATOR
+let pagenum = +page;
+let pages_li = Array.from(document.getElementsByClassName('pages-a'))
+if (pagenum >= 20) {
+    pagenum = 20;
+} else if (pagenum <= 3) {
+    pagenum = 3;
 }
-else {
-    pagenum = 2
-    let object = [
-        { id: pagenum, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-        { id: pagenum++, num: pagenum, link: "/recent-release/" + pagenum + "?" + "type=" + correcttype },
-    ]
-    pages_li.forEach((element, i) => {
-        element.innerHTML = object[i].num
-        element.href = object[i].link
-    });
-}
+pagenum = pagenum - 2;
+pages_li.forEach((element) => {
+    element.innerHTML = pagenum++;
+    element.href = `/recent-release/${pagenum - 1}?type=${correcttype}`;
+});
+document.getElementById("first-page").href = "/recent-release/1" + "?" + "type=" + correcttype;
+document.getElementById("last-page").href = "/recent-release/22" + "?" + "type=" + correcttype;

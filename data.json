@@ -2,24 +2,31 @@
   {
     "id": "1676798323792",
     "name": "owner",
-    "recent": [
-      {
-        "img": "https://gogocdn.net/cover/detective-conan.png",
-        "episodeName": "detective-conan",
-        "episodeNum": "1077"
-      },
-      {
-        "img": "https://gogocdn.net/cover/benriya-saitou-san-isekai-ni-iku-1672328688.png",
-        "episodeName": "benriya-saitou-san-isekai-ni-iku",
-        "episodeNum": "10"
-      }
-    ],
-    "bookmark": [
-      {
-        "animeId": "21",
-        "Image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21-tXMN3Y20PIL9.jpg",
-        "title": "ONE PIECE"
-      }
-    ]
+    "email": "owner@mrvegit",
+    "password": "$2b$10$VmFK7dCUZ3o5T7iwVY0cBezKjaQPs2SCD2QVx2dqAdj9881nyCvQG"
+  },
+  {
+    "id": "1676798586307",
+    "name": "Rajdeb",
+    "email": "rajdeb@gmail",
+    "password": "$2b$10$lXemLtoZAOtMj4CEEJtR1uKfmLMo3HuEh61fyciYW/a9hBIr.fZGe"
+  },
+  {
+    "id": "1676798632739",
+    "name": "Argho",
+    "email": "argho@gmail",
+    "password": "$2b$10$4vn/19qtRQyYgD5bMyzaaOn1Ua7CJX8zHiGlivX2pFf/jswM8xzSC"
+  },
+  {
+    "id": "1676798803337",
+    "name": "Tania",
+    "email": "tania@gmail",
+    "password": "$2b$10$OKTk25nv.v8FqE3ajRCCoO6dPHUkLLOMe6xH/cSfQErDS01fwauAS"
+  },
+  {
+    "id": "1676799090552",
+    "name": "Arbindo",
+    "email": "arbindo@gmail",
+    "password": "$2b$10$5UojRDY97kwV8utfivR/lexnbhwsUXAELWMviS8hZEE68oexfwEkS"
   }
 ]
