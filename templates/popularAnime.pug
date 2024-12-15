@@ -1,0 +1,85 @@
+extends template.pug
+
+block scripts
+block style 
+  style
+    include ../static/css/index.css
+    include ../static/css/media.css
+block content
+  p#pagename.hide #{pageNum} 
+  h1(onclick="openSearch()")#Search-Choose FILTER (ADVANCED SEARCH)
+  section#Search-Catagories.Search-Active 
+
+    div.Query-Search
+     input#Query-Search-Input(type="search",placeholder="Search Animes")
+    div.filter_heading Filter
+    div#one_option_needed  
+      div.Type-Catagories
+        label(for="Season-Options").Season-Card-Name Season:
+        select(name="Season")#Season-Options
+          option(value="" selected) ALL
+          option(value="WINTER") WINTER
+          option(value="SPRING") SPRING
+          option(value="SUMMER") SUMMER
+          option(value="FALL") FALL
+      div.Type-Catagories
+        label(for="Format-Options").Format-Card-Name Format:
+        select(name="Format")#Format-Options
+          option(value="" selected) ALL
+          option(value="TV") TV
+          option(value="TV_SHORT") TV_SHORT
+          option(value="OVA") OVA
+          option(value="ONA") ONA
+          option(value="MOVIE") MOVIE
+          option(value="SPECIAL") SPECIAL
+          option(value="MUSIC") MUSIC
+      div.Type-Catagories
+        label(for="Status-Options").Status-Card-Name Status:
+        select(name="Status")#Status-Options
+          option(value="" selected) ALL
+          option(value="RELEASING") RELEASING
+          option(value="NOT_YET_RELEASING") NOT_YET_RELEASING
+          option(value="FINISHED") FINISHED
+          option(value="CANCELLED") CANCELLED
+    div.Type-Catagories
+      div.filter_heading.Genres-Card-Name Genre
+      div#Genres-Options
+        p.genre_Inactive Action
+        p.genre_Inactive Adventure
+        p.genre_Inactive Cars
+        p.genre_Inactive Comedy
+        p.genre_Inactive Drama
+        p.genre_Inactive Fantasy
+        p.genre_Inactive Horror
+        p.genre_Inactive Mahou Shoujo
+        p.genre_Inactive Mecha
+        p.genre_Inactive Music
+        p.genre_Inactive Mystery
+        p.genre_Inactive Psychological
+        p.genre_Inactive Romance
+        p.genre_Inactive Sci-Fi
+        p.genre_Inactive Slice of Life
+        p.genre_Inactive Sports
+        p.genre_Inactive Supernatural
+        p.genre_Inactive Thriller
+    p#search-Anilist(href="#") Search
+    a#search_Url(href='')
+  section#recents-anime
+    h1#popular-heading Popular Anime
+    div#recents-anime-container
+      template.recents-anime-template
+        div.recents-anime-cards
+          a.recents-anime-link(href="#")
+            img.recents-anime-img
+          p.recents-anime-title
+  section#pages 
+    p#first-page First page
+    div.pages-div
+      p.pages-a 
+      p.pages-a 
+      p.pages-a 
+      p.pages-a  
+      p.pages-a   
+    p#last-page Last page 
+  script(src='../static/js/popularAnime.js' type='module') 
+
