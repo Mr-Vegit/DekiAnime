@@ -13,7 +13,7 @@ installation is simple.
 
   
 
-Run the following command to clone the repository, and install the dependencies.
+STEP 1 : Run the following command to clone the repository, and install the dependencies.
 
   
 
@@ -29,10 +29,10 @@ npm install
 
 
 
-***Edit .env file and add mongodb url , port , and session key in it***
+STEP 2 : ***Edit .env file and add mongodb url , port , and session key in it***
 
 
-start the server!
+STEP 3 : start the server!
   
 
 ```sh
