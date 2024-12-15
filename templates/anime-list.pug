@@ -1,0 +1,77 @@
+extends template.pug
+
+block scripts
+block style 
+  style
+    include ../static/css/index.css
+    include ../static/css/media.css
+block content
+  p#key.hide #{genre} 
+  p#pagename.hide #{pagenum}
+    h1(onclick="openSearch()")#Search-Choose FILTER (ADVANCED SEARCH) &plus;
+  section#Search-Catagories.Search-Active 
+    //- div.Type-Catagories
+    //-   div.Season-Card-Name season:
+    //-   div#Season-Options 
+    //-     p WINTER
+    //-     p SPRING
+    //-     p SUMMER
+    //-     p FALL
+    //- div.Type-Catagories
+      div.Format-Card-Name format:
+      div#Format-Options
+        p TV
+        p TV_SHORT
+        p OVA
+        p ONA
+        p MOVIE
+        p SPECIAL
+        p MUSIC
+    div.Type-Catagories
+      div.Genres-Card-Name genres
+      div#Genres-Options
+        a(href="/anime-list?genre=Action")  Action
+        a(href="/anime-list?genre=Adventure")  Adventure
+        a(href="/anime-list?genre=Cars")  Cars
+        a(href="/anime-list?genre=Comedy")  Comedy
+        a(href="/anime-list?genre=Drama")  Drama
+        a(href="/anime-list?genre=Fantasy")  Fantasy
+        a(href="/anime-list?genre=Horror")  Horror
+        a(href="/anime-list?genre=Mahou Shoujo")  Mahou Shoujo
+        a(href="/anime-list?genre=Mecha")  Mecha
+        a(href="/anime-list?genre=Music")  Music
+        a(href="/anime-list?genre=Mystery")  Mystery
+        a(href="/anime-list?genre=Psychological")  Psychological
+        a(href="/anime-list?genre=Romance")  Romance
+        a(href="/anime-list?genre=Sci-Fi")  Sci-Fi
+        a(href="/anime-list?genre=Slice of Life")  Slice of Life
+        a(href="/anime-list?genre=Sports")  Sports
+        a(href="/anime-list?genre=Supernatural")  Supernatural
+        a(href="/anime-list?genre=Thriller")  Thriller
+    //- div.Type-Catagories
+    //-   div.Status-Card-Name status:
+    //-   div#Status-Options
+    //-     p RELEASING
+    //-     p NOT_YET_RELEASED
+    //-     p FINISHED
+    //-     p CANCELLED
+    //-     p HIATUS
+    //- a#search-Anilist(href="#") Search 
+  section#recents-anime
+    h1#popular-heading Search Results
+    div#recents-anime-container
+      template.recents-anime-template
+        div.recents-anime-cards
+          a.recents-anime-link(href="#")
+            img.recents-anime-img
+          p.recents-anime-title
+  section#pages 
+    a#first-page(href="/anime-list") First page
+    div.pages-div
+      a.pages-a 
+      a.pages-a 
+      a.pages-a 
+      a.pages-a  
+      a.pages-a   
+    a#last-page(href="/anime-list/20") Last page 
+  script(src='../static/js/anime-list.js' type='module')   
