@@ -19,9 +19,9 @@ STEP 1 : Run the following command to clone the repository, and install the depe
 
 ```sh
 
-git clone https://github.com/consumet/api.consumet.org.git
+git clone https://github.com/Mr-Vegit/DekiAnime.git
 
-cd api.consumet.org
+cd DekiAnime
 
 npm install 
 
@@ -29,10 +29,10 @@ npm install
 
 
 
-STEP 2 : ***Edit .env file and add mongodb url , port , and session key in it***
+STEP 2: ***Edit .env file and add MongoDB URL, port, and session key in it***
 
 
-STEP 3 : start the server!
+STEP 3: start the server!
   
 
 ```sh
